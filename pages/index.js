@@ -1,27 +1,15 @@
-import { useMediaQuery } from "react-responsive";
+import React, { useContext } from "react";
+import { Context } from "../components/Context";
+import CreditCardFormDesktop from "../components/CreditCardForm/CreditCardFormDesktop";
+import CreditCardFormMobile from "../components/CreditCardForm/CreditCardFormMobile";
 
 export default function Home() {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-device-width: 1224px)",
-  });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isTabletOrMobileDevice = useMediaQuery({
-    query: "(max-device-width: 1224px)",
-  });
-  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  const { isDesktopOrLaptop, isTabletOrMobileDevice } = useContext(Context);
   return (
     <div>
       <h1>Device Test!</h1>
-      {isDesktopOrLaptop && (
-        <>
-          <p>You are a desktop or laptop</p>
-          {isTabletOrMobile && (
-            <p>You are sized like a tablet or mobile phone though</p>
-          )}
-        </>
-      )}
-      {isTabletOrMobileDevice && <p>You are a tablet or mobile phone</p>}
-      <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
+      {isDesktopOrLaptop && <CreditCardFormDesktop />}
+      {isTabletOrMobileDevice && <CreditCardFormMobile />}
     </div>
   );
 }
