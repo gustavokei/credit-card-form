@@ -1,16 +1,22 @@
-.creditCard {
+.container {
   margin-top: 30px;
-}
 
-.iconVisa {
-  position: absolute;
-  top: 35.41px;
-  left: 26.91px;
+  .creditCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 // Mobile
 @media (max-width: 1224px) {
-  .creditCard {
+  .container {
     margin-top: 15px;
+    height: 100%;
+
+    .creditCard {
+      width: 100%;
+      position: initial;
+    }
   }
 }

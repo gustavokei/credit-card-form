@@ -1,0 +1,69 @@
+.form {
+  width: 440px;
+  margin-top: 53px;
+  justify-content: flex-end;
+
+  .field {
+    margin-top: 40px;
+
+    label {
+      font-size: 17px;
+    }
+
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+  }
+
+  .halfWidth {
+    justify-content: space-between;
+
+    .field {
+      width: 48%;
+
+      &:nth-of-type(1) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 62px;
+    width: 246px;
+    height: 51px;
+    float: right;
+    box-shadow: none;
+    border-radius: 10px;
+
+    .buttonText {
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Mobile
+@media (max-width: 1224px) {
+  .form {
+    width: 100%;
+    padding: 0 40px 40px 40px;
+    margin-top: 0;
+
+    .field {
+      margin-top: 20px;
+    }
+
+    .halfWidth {
+      .field {
+        &:nth-of-type(1) {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .button {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  }
+}

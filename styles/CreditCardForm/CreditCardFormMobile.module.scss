@@ -1,10 +1,11 @@
 .mobileWrapper {
   .container {
+    flex-direction: column;
     .topContent {
       display: block;
       width: 100%;
-      height: 239px;
-      background: #de4b4b;
+      height: 100%;
+      background: transparent;
       position: relative;
 
       .checkoutStepTitle {
@@ -35,7 +36,22 @@
 
       .creditCard {
         justify-content: center;
+        padding: 0 40px;
       }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #de4b4b;
+        width: 100%;
+        height: 239px;
+        z-index: -1;
+      }
+    }
+
+    .bottomContent {
     }
   }
 }

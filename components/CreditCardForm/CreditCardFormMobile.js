@@ -1,6 +1,7 @@
 import React from "react";
 import s from "../../styles/CreditCardForm/CreditCardFormMobile.module.scss";
 import CreditCardFront from "./CreditCard/CreditCardFront";
+import Form from "./Form/Form";
 
 const CreditCardFormMobile = () => {
   return (
@@ -28,7 +29,9 @@ const CreditCardFormMobile = () => {
             <CreditCardFront />
           </div>
         </div>
-        <div className={s.bottomContent}></div>
+        <div className={s.bottomContent}>
+          <Form />
+        </div>
       </div>
     </div>
   );

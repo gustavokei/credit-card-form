@@ -46,5 +46,58 @@
         }
       }
     }
+
+    .rightContent {
+      position: absolute;
+      top: 50px;
+      right: 64px;
+      .rightContentHeader {
+        .step {
+          align-items: center;
+          .stepIcon {
+            background: white;
+            border: 2px #de4b4b solid;
+            border-radius: 100%;
+            width: 22px;
+            height: 22px;
+            justify-content: center;
+            align-items: center;
+
+            strong {
+              color: #de4b4b;
+              font-size: 14px;
+              line-height: 9px;
+              font-weight: 700;
+            }
+          }
+
+          .stepText {
+            color: #de4b4b;
+            margin-left: 8px;
+          }
+
+          &.active {
+            .stepIcon {
+              background: #de4b4b;
+            }
+          }
+
+          &:after {
+            content: "";
+            background: url("/CreditCardForm/icon-chevron-right-primary.svg");
+            background-size: cover;
+            width: 8px;
+            height: 14px;
+            margin: 0 24px;
+          }
+
+          &:nth-last-child(1) {
+            &::after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
   }
 }
