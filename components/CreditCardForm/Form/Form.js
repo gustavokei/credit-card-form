@@ -150,6 +150,7 @@ const Form = () => {
         onChange={formik.handleChange}
         error={formik.touched.cardNo && Boolean(formik.errors.cardNo)}
         helperText={formik.touched.cardNo && formik.errors.cardNo}
+        onFocus={() => showFront()}
         onClick={() => showFront()}
       />
       <TextField
@@ -162,6 +163,7 @@ const Form = () => {
         onChange={formik.handleChange}
         error={formik.touched.name && Boolean(formik.errors.name)}
         helperText={formik.touched.name && formik.errors.name}
+        onFocus={() => showFront()}
         onClick={() => showFront()}
       />
       <div className={`flex ${s.halfWidth}`}>
@@ -177,6 +179,7 @@ const Form = () => {
           onChange={formik.handleChange}
           error={formik.touched.expiryDate && Boolean(formik.errors.expiryDate)}
           helperText={formik.touched.expiryDate && formik.errors.expiryDate}
+          onFocus={() => showFront()}
           onClick={() => showFront()}
         />
         <TextField
@@ -191,6 +194,7 @@ const Form = () => {
           onChange={formik.handleChange}
           error={formik.touched.cvv && Boolean(formik.errors.cvv)}
           helperText={formik.touched.cvv && formik.errors.cvv}
+          onFocus={() => showBack()}
           onClick={() => showBack()}
         />
       </div>
@@ -208,6 +212,7 @@ const Form = () => {
           formik.touched.installments && Boolean(formik.errors.installments)
         }
         helperText={formik.touched.installments && formik.errors.installments}
+        onFocus={() => showFront()}
         onClick={() => showFront()}
       >
         <MenuItem value={1}>1x R$1.000,00 sem juros</MenuItem>
