@@ -55,7 +55,7 @@ const cvvMask = (props) => {
   );
 };
 
-const ExpiryDateMask = (props) => {
+const expiryDateMask = (props) => {
   const { inputRef, ...other } = props;
   return (
     <MaskedInput
@@ -169,7 +169,7 @@ const Form = () => {
       <div className={`flex ${s.halfWidth}`}>
         <TextField
           InputProps={{
-            inputComponent: ExpiryDateMask,
+            inputComponent: expiryDateMask,
           }}
           className={s.field}
           id="expiryDate"
