@@ -5,6 +5,38 @@
     position: absolute;
     top: 0;
     left: 0;
+    box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+  }
+
+  .cardText {
+    position: absolute;
+    text-shadow: 0px 1px 2px #000000b3;
+    font-size: 16px;
+
+    &.cardNo {
+      left: 9%;
+      bottom: 40%;
+      letter-spacing: 2.31px;
+      font-size: 22px;
+    }
+    &.name {
+      left: 9%;
+      bottom: 20%;
+      text-transform: uppercase;
+    }
+    &.expiryDate {
+      right: 9%;
+      bottom: 20%;
+    }
+
+    &.cvv {
+      left: 53.5%;
+      top: 51.5%;
+      transform: translate(-50%, -50%);
+      text-shadow: none;
+      font-size: 32px;
+    }
   }
 }
 
@@ -17,6 +49,26 @@
     .creditCard {
       width: 100%;
       position: initial;
+    }
+    .cardText {
+      &.cvv {
+        left: 54%;
+        top: 54.5%;
+      }
+    }
+  }
+}
+
+// Small devices
+@media (max-width: 320px) {
+  .container {
+    .cardText {
+      &.cardNo {
+        font-size: 18px;
+      }
+      &.cvv {
+        font-size: 25px;
+      }
     }
   }
 }

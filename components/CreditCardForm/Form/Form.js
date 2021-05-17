@@ -5,8 +5,57 @@ import { Context } from "../../Context";
 import * as yup from "yup";
 import { TextField, MenuItem, Button } from "@material-ui/core";
 import MaskedInput from "react-text-mask";
+import axios from "axios";
 
-const TextMask = (props) => {
+const cardNoMask = (props) => {
+  const { inputRef, ...other } = props;
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        " ",
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        " ",
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        " ",
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+        /[1-9]/,
+      ]}
+      placeholderChar={"\u2000"}
+    />
+  );
+};
+
+const cvvMask = (props) => {
+  const { inputRef, ...other } = props;
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[/[1-9]/, /[1-9]/, /[1-9]/]}
+      placeholderChar={"\u2000"}
+    />
+  );
+};
+
+const ExpiryDateMask = (props) => {
   const { inputRef, ...other } = props;
   return (
     <MaskedInput
@@ -16,7 +65,6 @@ const TextMask = (props) => {
       }}
       mask={[/[1-9]/, /[1-9]/, "/", /[1-9]/, /[1-9]/]}
       placeholderChar={"\u2000"}
-      showMask
     />
   );
 };
@@ -27,6 +75,7 @@ const Form = () => {
     setPaymentInfo,
     setShowCreditCardFront,
     setFlipCreditCard,
+    setCardType,
   } = useContext(Context);
 
   const showFront = () => {
@@ -47,8 +96,7 @@ const Form = () => {
     validationSchema: yup.object({
       cardNo: yup
         .string()
-        .min(16, "Número de cartão inválido")
-        .max(16, "Número de cartão inválido")
+        .matches(/\d{4} *\d{4} *\d{4} *\d{4}/, "Número de cartão inválido")
         .required("Número de cartão inválido"),
       name: yup.string().required("Insira seu nome completo"),
       // Credit Card Date - https://regex101.com/library/AFarfB
@@ -57,9 +105,8 @@ const Form = () => {
         .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Data inválida")
         .required("Data inválida"),
       cvv: yup
-        .number()
-        .min(3, "Código inválido")
-        .max(3, "Código inválido")
+        .string()
+        .matches(/^[0-9]{3,4}/, "Código inválido")
         .required("Código inválido"),
       installments: yup
         .number()
@@ -68,27 +115,37 @@ const Form = () => {
         .required("Insira o número de parcelas"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      axios
+        .post("https://jsonplaceholder.typicode.com/posts", values)
+        .then((res) => {
+          alert("Pagamento realizado com sucesso");
+        })
+        .catch((err) => {
+          alert("Ocorreu um erro");
+        });
     },
   });
 
   useEffect(() => {
     setPaymentInfo(formik.values);
+    if (/\d{4} *\d{4} *\d{4} *\d{4}/.test(formik.values.cardNo)) {
+      setCardType("visa");
+    } else {
+      setCardType(null);
+    }
   }, [formik.values]);
-
-  useEffect(() => {
-    console.log(paymentInfo);
-  }, [paymentInfo]);
 
   return (
     <form className={s.form} onSubmit={formik.handleSubmit}>
       <TextField
+        InputProps={{
+          inputComponent: cardNoMask,
+        }}
         className={s.field}
         fullWidth
         id="cardNo"
         name="cardNo"
         label="Número do cartão"
-        type="number"
         value={formik.values.cardNo}
         onChange={formik.handleChange}
         error={formik.touched.cardNo && Boolean(formik.errors.cardNo)}
@@ -110,7 +167,7 @@ const Form = () => {
       <div className={`flex ${s.halfWidth}`}>
         <TextField
           InputProps={{
-            inputComponent: TextMask,
+            inputComponent: ExpiryDateMask,
           }}
           className={s.field}
           id="expiryDate"
@@ -123,11 +180,13 @@ const Form = () => {
           onClick={() => showFront()}
         />
         <TextField
+          InputProps={{
+            inputComponent: cvvMask,
+          }}
           className={s.field}
           id="cvv"
           name="cvv"
           label="CVV"
-          type="number"
           value={formik.values.cvv}
           onChange={formik.handleChange}
           error={formik.touched.cvv && Boolean(formik.errors.cvv)}

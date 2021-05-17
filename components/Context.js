@@ -21,6 +21,7 @@ const Provider = ({ children }) => {
 
   const [showCreditCardFront, setShowCreditCardFront] = useState(true);
   const [flipCreditCard, setFlipCreditCard] = useState(false);
+  const [cardType, setCardType] = useState(null);
 
   const dataProvider = {
     isDesktopOrLaptop,
@@ -31,6 +32,8 @@ const Provider = ({ children }) => {
     setShowCreditCardFront,
     flipCreditCard,
     setFlipCreditCard,
+    cardType,
+    setCardType,
   };
 
   return <Context.Provider value={dataProvider}>{children}</Context.Provider>;

@@ -39,6 +39,11 @@ h3 {
 
 // Fonts
 @font-face {
+  font-family: "San Francisco Regular";
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+@font-face {
   font-family: "San Francisco Semibold";
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff");
 }
@@ -50,6 +55,10 @@ h3 {
 
 .verdana {
   font-family: Verdana, Geneva, sans-serif;
+}
+
+.sf-regular {
+  font-family: "San Francisco Regular";
 }
 
 .sf-semibold {
@@ -97,8 +106,9 @@ h3 {
 }
 
 .img-credit-card-back {
-  width: 364px;
-  height: 224px;
+  width: 366px;
+  height: 240px;
+  position: relative;
   transform-style: preserve-3d;
   transform: rotateY(180deg);
 }

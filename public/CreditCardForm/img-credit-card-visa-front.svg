@@ -1,12 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="366.008" height="246.953" viewBox="0 0 366.008 246.953">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="364" height="223.782" viewBox="0 0 364 223.782">
   <defs>
-    <filter id="Rectangle_1" x="0" y="7" width="366.008" height="239.953" filterUnits="userSpaceOnUse">
-      <feOffset dy="6" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feFlood flood-opacity="0.349"/>
-      <feComposite operator="in" in2="blur"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <radialGradient id="radial-gradient" cx="0.248" cy="0.661" r="1.189" gradientTransform="translate(0.095 0.081) scale(0.615 0.878)" gradientUnits="objectBoundingBox">
       <stop offset="0" stop-color="#5a7589"/>
       <stop offset="0.323" stop-color="#436175"/>
@@ -17,11 +10,9 @@
       <rect id="Rectangle_3" data-name="Rectangle 3" width="364" height="223.782" fill="none"/>
     </clipPath>
   </defs>
-  <g id="Group_4" data-name="Group 4" transform="translate(-31 -351.109)">
+  <g id="Group_4" data-name="Group 4" transform="translate(-32 -351.109)">
     <g id="img-credit-card-visa-front" transform="translate(-309 -36.891)">
-      <g transform="matrix(1, 0, 0, 1, 340, 388)" filter="url(#Rectangle_1)">
-        <rect id="Rectangle_1-2" data-name="Rectangle 1" width="330.008" height="203.953" rx="10" transform="translate(18 19)" fill="#fff"/>
-      </g>
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="330.008" height="203.953" rx="10" transform="translate(358 407)" fill="#fff"/>
       <g id="Group_3" data-name="Group 3" transform="translate(341 388)">
         <rect id="Rectangle_2" data-name="Rectangle 2" width="364" height="223.782" rx="10" fill="url(#radial-gradient)"/>
         <g id="Group_2" data-name="Group 2" clip-path="url(#clip-path)">
