@@ -1,9 +1,8 @@
+// Globals
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,4 +12,79 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+// Fonts
+@font-face {
+  font-family: "San Francisco Semibold";
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff");
+}
+
+@font-face {
+  font-family: "San Francisco Bold";
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
+}
+
+.verdana {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.sf-semibold {
+  font-family: "San Francisco Semibold";
+}
+
+.sf-bold {
+  font-family: "San Francisco Bold";
+}
+
+// Icons
+.icon-chevron {
+  height: 20px;
+  width: 16px;
+}
+
+.icon-chevron-left {
+  transform: rotate(180deg);
+}
+
+.icon-visa {
+  width: 69px;
+  height: 23px;
+}
+
+// Images
+.img-credit-card-front {
+  width: 366px;
+  height: 240px;
+  background: url("/CreditCardForm/img-credit-card-visa-front.svg");
+  position: relative;
+}
+
+.img-credit-card-back {
+  width: 364px;
+  height: 224px;
+  background: url("/CreditCardForm/img-credit-card-visa-back.svg");
+  position: relative;
+}
+
+// Texts
+.text-primary {
+  color: #de4b4b;
+}
+.text-white {
+  color: #fff;
 }

@@ -1,0 +1,41 @@
+.mobileWrapper {
+  .container {
+    .topContent {
+      display: block;
+      width: 100%;
+      height: 239px;
+      background: #de4b4b;
+      position: relative;
+
+      .checkoutStepTitle {
+        text-align: center;
+        display: block;
+        margin-top: 40px;
+      }
+
+      .iconChevron {
+        position: absolute;
+        left: 15px;
+        top: 38px;
+      }
+
+      .addCreditCardTitle {
+        align-items: center;
+        margin-top: 30px;
+        justify-content: center;
+
+        h3 {
+          font-size: 16px;
+          font-weight: 700;
+          width: 165px;
+          height: 39px;
+          margin-left: 15px;
+        }
+      }
+
+      .creditCard {
+        justify-content: center;
+      }
+    }
+  }
+}

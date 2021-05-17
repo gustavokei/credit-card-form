@@ -6,8 +6,7 @@ import CreditCardFormMobile from "../components/CreditCardForm/CreditCardFormMob
 export default function Home() {
   const { isDesktopOrLaptop, isTabletOrMobileDevice } = useContext(Context);
   return (
-    <div>
-      <h1>Device Test!</h1>
+    <div className="container">
       {isDesktopOrLaptop && <CreditCardFormDesktop />}
       {isTabletOrMobileDevice && <CreditCardFormMobile />}
     </div>

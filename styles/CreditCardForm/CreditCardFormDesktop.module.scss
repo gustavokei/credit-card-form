@@ -1,0 +1,50 @@
+.desktopWrapper {
+  position: relative;
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background: #f7f7f7;
+
+  .container {
+    width: 1024px;
+    height: 596px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+
+    .leftContent {
+      width: 352px;
+      height: 100%;
+      background: #de4b4b;
+      padding-left: 64px;
+      padding-top: 51px;
+
+      .changePaymentMethod {
+        align-items: center;
+        cursor: pointer;
+        width: fit-content;
+
+        span {
+          font-size: 13px;
+          margin-left: 10px;
+        }
+      }
+
+      .addCreditCardTitle {
+        align-items: center;
+        margin-top: 54px;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 700;
+          width: 207px;
+          height: 48px;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

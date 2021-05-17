@@ -1,11 +1,18 @@
+import { useState, useEffect } from "react";
 import "../styles/globals.scss";
 import Provider from "../components/Context";
 
 const MyApp = ({ Component, pageProps }) => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
-    <Provider>
-      <Component {...pageProps} />
-    </Provider>
+    mounted && (
+      <Provider>
+        <Component {...pageProps} />
+      </Provider>
+    )
   );
 };
 
