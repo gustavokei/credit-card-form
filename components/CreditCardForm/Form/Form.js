@@ -4,9 +4,43 @@ import { useFormik } from "formik";
 import { Context } from "../../Context";
 import * as yup from "yup";
 import { TextField, MenuItem, Button } from "@material-ui/core";
+import MaskedInput from "react-text-mask";
+
+const TextMask = (props) => {
+  const { inputRef, ...other } = props;
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[/[1-9]/, /[1-9]/, "/", /[1-9]/, /[1-9]/]}
+      placeholderChar={"\u2000"}
+      showMask
+    />
+  );
+};
 
 const Form = () => {
-  const { paymentInfo, setPaymentInfo } = useContext(Context);
+  const {
+    paymentInfo,
+    setPaymentInfo,
+    setShowCreditCardFront,
+    setFlipCreditCard,
+  } = useContext(Context);
+
+  const showFront = () => {
+    setFlipCreditCard(false);
+    setTimeout(() => {
+      setShowCreditCardFront(true);
+    }, 200);
+  };
+  const showBack = () => {
+    setFlipCreditCard(true);
+    setTimeout(() => {
+      setShowCreditCardFront(false);
+    }, 200);
+  };
 
   const formik = useFormik({
     initialValues: paymentInfo,
@@ -14,15 +48,24 @@ const Form = () => {
       cardNo: yup
         .string()
         .min(16, "Número de cartão inválido")
+        .max(16, "Número de cartão inválido")
         .required("Número de cartão inválido"),
       name: yup.string().required("Insira seu nome completo"),
-      expiryDate: yup.string().required("Data inválida"),
+      // Credit Card Date - https://regex101.com/library/AFarfB
+      expiryDate: yup
+        .string()
+        .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Data inválida")
+        .required("Data inválida"),
       cvv: yup
         .number()
         .min(3, "Código inválido")
         .max(3, "Código inválido")
         .required("Código inválido"),
-      installments: yup.number().required("Insira o número de parcelas"),
+      installments: yup
+        .number()
+        .min(1, "Insira o número de parcelas")
+        .max(3, "Insira o número de parcelas")
+        .required("Insira o número de parcelas"),
     }),
     onSubmit: (values) => {
       console.log(values);
@@ -50,6 +93,7 @@ const Form = () => {
         onChange={formik.handleChange}
         error={formik.touched.cardNo && Boolean(formik.errors.cardNo)}
         helperText={formik.touched.cardNo && formik.errors.cardNo}
+        onClick={() => showFront()}
       />
       <TextField
         className={s.field}
@@ -61,9 +105,13 @@ const Form = () => {
         onChange={formik.handleChange}
         error={formik.touched.name && Boolean(formik.errors.name)}
         helperText={formik.touched.name && formik.errors.name}
+        onClick={() => showFront()}
       />
       <div className={`flex ${s.halfWidth}`}>
         <TextField
+          InputProps={{
+            inputComponent: TextMask,
+          }}
           className={s.field}
           id="expiryDate"
           name="expiryDate"
@@ -72,6 +120,7 @@ const Form = () => {
           onChange={formik.handleChange}
           error={formik.touched.expiryDate && Boolean(formik.errors.expiryDate)}
           helperText={formik.touched.expiryDate && formik.errors.expiryDate}
+          onClick={() => showFront()}
         />
         <TextField
           className={s.field}
@@ -83,6 +132,7 @@ const Form = () => {
           onChange={formik.handleChange}
           error={formik.touched.cvv && Boolean(formik.errors.cvv)}
           helperText={formik.touched.cvv && formik.errors.cvv}
+          onClick={() => showBack()}
         />
       </div>
       <TextField
@@ -99,6 +149,7 @@ const Form = () => {
           formik.touched.installments && Boolean(formik.errors.installments)
         }
         helperText={formik.touched.installments && formik.errors.installments}
+        onClick={() => showFront()}
       >
         <MenuItem value={1}>1x R$1.000,00 sem juros</MenuItem>
         <MenuItem value={2}>2x R$500,00 sem juros</MenuItem>

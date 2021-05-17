@@ -93,12 +93,29 @@ h3 {
   width: 366px;
   height: 240px;
   position: relative;
+  transform-style: preserve-3d;
 }
 
 .img-credit-card-back {
   width: 364px;
   height: 224px;
-  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+}
+
+.animate-credit-card {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipCreditCard {
+  transform: translate(80px) rotateY(180deg);
+}
+
+@media (max-width: 1224px) {
+  .flipCreditCard {
+    transform: rotateY(180deg);
+  }
 }
 
 // Texts

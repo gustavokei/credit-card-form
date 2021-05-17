@@ -19,11 +19,18 @@ const Provider = ({ children }) => {
     installments: "",
   });
 
+  const [showCreditCardFront, setShowCreditCardFront] = useState(true);
+  const [flipCreditCard, setFlipCreditCard] = useState(false);
+
   const dataProvider = {
     isDesktopOrLaptop,
     isTabletOrMobileDevice,
     paymentInfo,
     setPaymentInfo,
+    showCreditCardFront,
+    setShowCreditCardFront,
+    flipCreditCard,
+    setFlipCreditCard,
   };
 
   return <Context.Provider value={dataProvider}>{children}</Context.Provider>;

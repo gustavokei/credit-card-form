@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import s from "../../styles/CreditCardForm/CreditCardFormMobile.module.scss";
 import CreditCardFront from "./CreditCard/CreditCardFront";
+import CreditCardBack from "./CreditCard/CreditCardBack";
 import Form from "./Form/Form";
+import { Context } from "../Context";
 
 const CreditCardFormMobile = () => {
+  const { showCreditCardFront, flipCreditCard } = useContext(Context);
+
   return (
     <div className={s.mobileWrapper}>
       <div className={`flex ${s.container}`}>
@@ -25,8 +29,12 @@ const CreditCardFormMobile = () => {
             </h3>
           </div>
 
-          <div className={`flex ${s.creditCard}`}>
-            <CreditCardFront />
+          <div
+            className={`flex ${s.creditCard} animate-credit-card ${
+              flipCreditCard ? "flipCreditCard" : ""
+            }`}
+          >
+            {showCreditCardFront ? <CreditCardFront /> : <CreditCardBack />}
           </div>
         </div>
         <div className={s.bottomContent}>

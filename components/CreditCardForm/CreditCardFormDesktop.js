@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import s from "../../styles/CreditCardForm/CreditCardFormDesktop.module.scss";
 import CreditCardFront from "./CreditCard/CreditCardFront";
+import CreditCardBack from "./CreditCard/CreditCardBack";
 import Form from "./Form/Form";
+import { Context } from "../Context";
 
 const CreditCardFormDesktop = () => {
+  const { showCreditCardFront, flipCreditCard } = useContext(Context);
+
   return (
     <div className={s.desktopWrapper}>
       <div className={`flex ${s.container}`}>
@@ -26,7 +30,13 @@ const CreditCardFormDesktop = () => {
               Adicione um novo cartão de crédito
             </h3>
           </div>
-          <CreditCardFront />
+          <div
+            className={`animate-credit-card ${
+              flipCreditCard ? "flipCreditCard" : ""
+            }`}
+          >
+            {showCreditCardFront ? <CreditCardFront /> : <CreditCardBack />}
+          </div>
         </div>
 
         <div className={s.rightContent}>
