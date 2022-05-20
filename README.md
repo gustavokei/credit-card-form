@@ -1,8 +1,5 @@
 This is a challenge I did sometime in my life 🙂, it was cool!
 
-Here is a live preview 😉
-[https://trusting-poincare-082b4b.netlify.app/](https://trusting-poincare-082b4b.netlify.app/)
-
 ![](https://i.imgur.com/pdPQQJL.gif)
 
 ## Getting Started
